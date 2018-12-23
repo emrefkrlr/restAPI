@@ -21,11 +21,11 @@ class RestService(IRestService):
         print('Hello, World 2!')
 
     def get(self, url):
-        print('RestService get method called!')
+        print('---------------RestService get method called!')
         return requests.get(url).json()
 
     def post(self, url, param):
-        print('RestService get method called!')
+        print('---------------RestService post method called!')
         return requests.post(url, param).json()
 
 class SOAPService(IRestService):
@@ -33,11 +33,11 @@ class SOAPService(IRestService):
         print('Hello, World 2!')
 
     def get(self, url):
-        print('SOAPService get method called!')
+        print('---------------SOAPService get method called!')
         return requests.get(url).json()
 
     def post(self, url, param):
-        print('SOAPService get method called!')
+        print('---------------SOAPService pos method called!')
         return requests.post(url, param).json()
 
 
@@ -50,8 +50,8 @@ class ServiceManager(object):
        print("ServiceManager get method called!")
        return self._restService.get(url)
 
-    def postTotwitter(self, url, param):
-       print("ServiceManager get method called!")
+    def post(self, url, param):
+       print("---------------ServiceManager post method called!")
        return self._restService.post(url, param)
 
 
@@ -65,8 +65,14 @@ try:
 except Exception as exc:
     print('Failed as it should!')
 
-getObjRest = restX.get("https://reqres.in/api/users/2")
-print(getObjRest)
+#getObjRest = restX.get("https://reqres.in/api/users/2")
+#print(getObjRest)
 
-getObjSoap = soapX.get("https://reqres.in/api/users/2")
-print(getObjSoap)
+
+request ={"name": "morpheus","job": "leader"}
+postObject = restX.post("https://reqres.in/api/users", request)
+print(postObject)
+
+
+#getObjSoap = soapX.get("https://reqres.in/api/users/2")
+#print(getObjSoap)
