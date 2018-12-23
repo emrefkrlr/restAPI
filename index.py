@@ -68,8 +68,9 @@ except Exception as exc:
 #getObjRest = restX.get("https://reqres.in/api/users/2")
 #print(getObjRest)
 
-
-request ={"name": "morpheus","job": "leader"}
+name = input("name: ")
+job = input("job: ")
+request ={"name": name,"job": job}
 postObject = restX.post("https://reqres.in/api/users", request)
 print(postObject)
 
